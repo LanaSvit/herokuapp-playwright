@@ -14,7 +14,6 @@ const contactName = "contactName";
 const contactLastName = "contactLastName";
 const newContactName = "NewName";
 const newContactLastName = "NewLastName";
-const contactEmail = generateUniqueEmail();
 const newContactEmail = "newjfkjk@jk.vkj";
 
 export const test = base.extend<MyFixtures>({
@@ -27,6 +26,8 @@ export const test = base.extend<MyFixtures>({
 });
 
 test("Add new contact", async ({ logInPage, contactListPage, page }) => {
+  const contactEmail = generateUniqueEmail();
+
   await logInPage.goto();
   await logInPage.logIn(correctEmail, correctPassword);
   await contactListPage.clickAdd();
@@ -46,6 +47,8 @@ test("Add new contact", async ({ logInPage, contactListPage, page }) => {
 });
 
 test("Edit contact", async ({ logInPage, contactListPage, page }) => {
+  const contactEmail = generateUniqueEmail();
+
   await logInPage.goto();
   await logInPage.logIn(correctEmail, correctPassword);
   await contactListPage.clickAdd();
@@ -65,6 +68,8 @@ test("Edit contact", async ({ logInPage, contactListPage, page }) => {
 });
 
 test("Delete contact", async ({ logInPage, contactListPage, page }) => {
+  const contactEmail = generateUniqueEmail();
+
   page.on("dialog", async (dialog) => {
     await dialog.accept();
   });

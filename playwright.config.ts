@@ -35,7 +35,6 @@ export default defineConfig({
     {
       name: "chromium",
       use: {
-        headless: false,
         ...devices["Desktop Chrome"],
       },
     },
