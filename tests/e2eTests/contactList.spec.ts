@@ -64,9 +64,8 @@ test("Edit contact", async ({ logInPage, contactListPage, page }) => {
     newContactLastName,
     newContactEmail
   );
-  const emailElement = page.locator("//*[@id='email']");
-  await page.waitForSelector("#email", { state: "visible" });
-  await expect(emailElement).toHaveText(newContactEmail);
+  await page.waitForSelector("h1", { state: "visible" });
+  await expect(page.locator("//*[@id='email']")).toHaveText(newContactEmail);
 });
 
 test("Delete contact", async ({ logInPage, contactListPage, page }) => {
