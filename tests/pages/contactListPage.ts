@@ -7,14 +7,10 @@ export class ContactListPage {
     await this.page.locator("//button[@id='add-contact']").click();
   }
 
-  async fillContactForm(
-    newContactName: string,
-    newContactLastName: string,
-    newContactEmail: string
-  ) {
-    await this.page.locator("//input[@id='firstName']").fill(newContactName);
-    await this.page.locator("//input[@id='lastName']").fill(newContactLastName);
-    await this.page.locator("//input[@id='email']").fill(newContactEmail);
+  async fillContactForm(name: string, lastName: string, email: string) {
+    await this.page.locator("//input[@id='firstName']").fill(name);
+    await this.page.locator("//input[@id='lastName']").fill(lastName);
+    await this.page.locator("//input[@id='email']").fill(email);
     await this.page.locator("//button[@id='submit']").click();
   }
 

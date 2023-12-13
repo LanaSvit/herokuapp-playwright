@@ -1,5 +1,5 @@
 import { test as base, expect } from "@playwright/test";
-import { LogInPage } from "./pages/logInPage";
+import { LogInPage } from "../pages/logInPage";
 
 const correctEmail = "jdkajkdj@ljklj.com";
 const correctPassword = "qm.JR8JmW8T!Aj";

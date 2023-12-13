@@ -1,7 +1,7 @@
 import { test as base, expect } from "@playwright/test";
-import { LogInPage } from "./pages/logInPage";
-import { ContactListPage } from "./pages/contactListPage";
-import { generateUniqueEmail } from "./utils/utils";
+import { LogInPage } from "../pages/logInPage";
+import { ContactListPage } from "../pages/contactListPage";
+import { generateUniqueEmail } from "../utils/utils";
 
 type MyFixtures = {
   logInPage: LogInPage;
@@ -64,7 +64,9 @@ test("Edit contact", async ({ logInPage, contactListPage, page }) => {
     newContactLastName,
     newContactEmail
   );
-  await expect(page.locator("//*[@id='email']")).toHaveText(newContactEmail);
+  const emailElement = page.locator("//*[@id='email']");
+  await page.waitForSelector("#email", { state: "visible" });
+  await expect(emailElement).toHaveText(newContactEmail);
 });
 
 test("Delete contact", async ({ logInPage, contactListPage, page }) => {
