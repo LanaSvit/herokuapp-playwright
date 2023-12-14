@@ -19,3 +19,8 @@ test("should log in", async ({ request }) => {
   });
   expect(response.ok()).toBeTruthy();
 });
+
+test("should delete user", async ({ request }) => {
+  const response = await request.delete(`https://reqres.in/api/user/6`, {});
+  expect(response.ok()).toBeTruthy();
+});
