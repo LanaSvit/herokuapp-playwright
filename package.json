@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "tests:herokuapp": "playwright test --config=playwright.config.ts --headed"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

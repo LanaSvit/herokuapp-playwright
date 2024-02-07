@@ -1,18 +1,22 @@
 import type { Page, Locator } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
-export class LogInPage {
-  private readonly inputEmail: Locator;
-  private readonly inputPassword: Locator;
-  private readonly btnSubmit: Locator;
+export class LogInPage extends BasePage {
+  readonly inputEmail: Locator;
+  readonly inputPassword: Locator;
+  readonly btnSubmit: Locator;
+  readonly errorMessage: Locator;
 
-  constructor(public readonly page: Page) {
-    this.inputEmail = this.page.locator("//input[@id='email']");
-    this.inputPassword = this.page.locator("//input[@id='password']");
-    this.btnSubmit = this.page.locator("//button[@id='submit']");
+  constructor(page: Page) {
+    super(page);
+    this.inputEmail = page.locator("//input[@id='email']");
+    this.inputPassword = page.locator("//input[@id='password']");
+    this.btnSubmit = page.locator("//button[@id='submit']");
+    this.errorMessage = page.locator("//*[@id='error']");
   }
 
   async goto() {
-    await this.page.goto("https://thinking-tester-contact-list.herokuapp.com/");
+    await this.page.goto(this.URL);
   }
 
   async logIn(email: string, password: string) {

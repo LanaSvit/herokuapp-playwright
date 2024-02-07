@@ -1,28 +1,13 @@
-import { test as base, expect } from "@playwright/test";
-import { LogInPage } from "../pages/logInPage";
-import { ContactListPage } from "../pages/contactListPage";
+import { expect } from "@playwright/test";
 import { generateUniqueEmail } from "../utils/utils";
 import { loginData } from "./loginData";
-
-type MyFixtures = {
-  logInPage: LogInPage;
-  contactListPage: ContactListPage;
-};
+import { test } from "../fixtures/fixtures.ts";
 
 const contactName = "contactName";
 const contactLastName = "contactLastName";
 const newContactName = "NewName";
 const newContactLastName = "NewLastName";
 const newContactEmail = "newjfkjk@jk.vkj";
-
-export const test = base.extend<MyFixtures>({
-  logInPage: async ({ page }, use) => {
-    await use(new LogInPage(page));
-  },
-  contactListPage: async ({ page }, use) => {
-    await use(new ContactListPage(page));
-  },
-});
 
 test("Add new contact", async ({ logInPage, contactListPage, page }) => {
   const contactEmail = generateUniqueEmail();
