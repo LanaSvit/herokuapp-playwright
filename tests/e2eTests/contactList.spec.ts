@@ -2,14 +2,13 @@ import { test as base, expect } from "@playwright/test";
 import { LogInPage } from "../pages/logInPage";
 import { ContactListPage } from "../pages/contactListPage";
 import { generateUniqueEmail } from "../utils/utils";
+import { loginData } from "./loginData";
 
 type MyFixtures = {
   logInPage: LogInPage;
   contactListPage: ContactListPage;
 };
 
-const correctEmail = "jdkajkdj@ljklj.com";
-const correctPassword = "qm.JR8JmW8T!Aj";
 const contactName = "contactName";
 const contactLastName = "contactLastName";
 const newContactName = "NewName";
@@ -29,7 +28,10 @@ test("Add new contact", async ({ logInPage, contactListPage, page }) => {
   const contactEmail = generateUniqueEmail();
 
   await logInPage.goto();
-  await logInPage.logIn(correctEmail, correctPassword);
+  await logInPage.logIn(
+    loginData.correctData.email,
+    loginData.correctData.password
+  );
   await contactListPage.clickAdd();
   await contactListPage.fillContactForm(
     contactName,
@@ -50,7 +52,10 @@ test("Edit contact", async ({ logInPage, contactListPage, page }) => {
   const contactEmail = generateUniqueEmail();
 
   await logInPage.goto();
-  await logInPage.logIn(correctEmail, correctPassword);
+  await logInPage.logIn(
+    loginData.correctData.email,
+    loginData.correctData.password
+  );
   await contactListPage.clickAdd();
   await contactListPage.fillContactForm(
     contactName,
@@ -76,7 +81,10 @@ test("Delete contact", async ({ logInPage, contactListPage, page }) => {
   });
 
   await logInPage.goto();
-  await logInPage.logIn(correctEmail, correctPassword);
+  await logInPage.logIn(
+    loginData.correctData.email,
+    loginData.correctData.password
+  );
   await contactListPage.clickAdd();
   await contactListPage.fillContactForm(
     contactName,
