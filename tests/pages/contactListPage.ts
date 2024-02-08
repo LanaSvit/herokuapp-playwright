@@ -1,7 +1,15 @@
-import type { Page } from "@playwright/test";
+import type { Locator, Page } from "@playwright/test";
 
 export class ContactListPage {
-  constructor(public readonly page: Page) {}
+  readonly page: Page;
+  readonly contactListHeader: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+    this.contactListHeader = page.getByRole("heading", {
+      name: "Contact List App",
+    });
+  }
 
   async clickAdd() {
     await this.page.locator("//button[@id='add-contact']").click();
