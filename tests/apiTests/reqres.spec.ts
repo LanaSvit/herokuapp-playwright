@@ -12,7 +12,6 @@ test("should get user with id: 2", async ({ request }) => {
   const response = await request.get(`https://reqres.in/api/users/2`);
   const data = await response.json();
   expect(response.ok()).toBeTruthy();
-  console.log(data.data);
   expect(data.data).toEqual(expect.objectContaining(singleUser));
 });
 
