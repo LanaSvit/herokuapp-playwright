@@ -1,0 +1,12 @@
+stages:
+  - test
+
+test:
+  stage: test
+  image: mcr.microsoft.com/playwright
+  script:
+    - npm install
+    - npx playwright test
+  artifacts:
+    paths:
+      - ./*_report.html
